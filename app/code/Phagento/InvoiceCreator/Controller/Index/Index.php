@@ -111,14 +111,12 @@ class Index extends Action {
 
             // Do the partial invoice creation
             if ($order->canInvoice()) {
-                $orderShippingAmount = $order->getShippingAmount();
-
                 /** @var $item \Magento\Sales\Model\Order\Item */
                 $item = $order->getAllItems()[0];
 
                 // Invoice preparation
                 $invoice = $this->_invoiceService->prepareInvoice($order, [$item->getId() => 0]);
-                $invoice->setShippingAmount($orderShippingAmount);
+                $invoice->setShippingAmount(0);
                 $invoice->setSubtotal($amount);
                 $invoice->setBaseSubtotal($amount);
                 $invoice->setGrandTotal($amount);
