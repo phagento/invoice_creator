@@ -101,6 +101,15 @@ class Index extends Action {
             }
 
             $order = $this->_orderRepository->get($orderId);
+
+            // Make sure that the amount passed is not greater than the order grand total
+            if ($order->getGrandTotal() < $amount) {
+                $result['message'] = 'The invoice amount is greater than the order amount! Please try a lower value.';
+                $resultJson->setData($result);
+                return $resultJson;
+            }
+
+            // Do the partial invoice creation
             if ($order->canInvoice()) {
                 $orderShippingAmount = $order->getShippingAmount();
 
