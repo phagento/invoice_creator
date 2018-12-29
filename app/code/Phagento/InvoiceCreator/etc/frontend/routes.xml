@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Phagento
+ * @package  InvoiceCreator
+ * @copyright   Copyright (c) 2018
+ * @author  Joenas Ejes
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="invoice_creator" frontName="invoice_creator">
+            <module name="Phagento_InvoiceCreator"/>
+        </route>
+    </router>
+</config>
